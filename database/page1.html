@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherNow</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+    body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centers content vertically */
+    background-image: url('your-background.jpg');
+    background-size: cover; /* Ensures the background image covers the entire body */
+    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-attachment: fixed; /* Makes the background image stay fixed while scrolling */
+    background-position: center; /* Centers the background image */
+    width: 100%;
+    height: 100vh; /* Ensures the body covers the entire viewport height */
+    animation: fadeInBackground 2s ease-in-out;
+}
+
+.weatherform {
+    margin: 20px;
+}
+
+.cityinput {
+    padding: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+    border: 2px solid #0000006d;
+    border-radius: 10px;
+    margin: 10px;
+    width: 300px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.cityinput:focus {
+    border-color: #02ec83;
+    box-shadow: 0 0 10px #02ec83;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    font-weight: bold;
+    background-color: #02ec83;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    
+}
+
+button:hover {
+    background-color: rgb(2, 151, 86);
+    color: aliceblue;
+    transform: scale(1.05);
+}
+
+.card {
+    background: linear-gradient(180deg, rgb(231, 234, 233), #5bca71);
+    padding: 50px;
+    box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.2);
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+p {
+    font-size: 1.5rem;
+    margin: 5px 0;
+}
+
+.citydisplay, .tempdisplay {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 25px;
+}
+
+.humiditydisplay {
+    font-weight: bold;
+    margin: 25px;
+}
+
+.descdisplay {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.errordisplay {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: hsla(0, 0%, 0%, 0.555);
+}
+
+@keyframes fadeInBackground {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        justify-content: flex-start;
+        height: auto; /* Adjusts for smaller screens */
+    }
+
+    .card {
+        padding: 20px;
+        min-width: auto; /* Adjusts for smaller screens */
+        animation: fadeInBackgroundMobile 1.5s ease-in-out;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .citydisplay, .tempdisplay {
+        font-size: 2.5rem;
+    }
+
+    .descdisplay {
+        font-size: 1.5rem;
+    }
+}
+
+@keyframes fadeInBackgroundMobile {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+    
+    </style>
+</head>
+<body>
+    <form class = "weatherform">
+        <input type="text" class="cityinput" placeholder="Enter city">
+        <button type="submit">Get Weather</button>
+        <div class="card" style="display: none;">
+           
+        </div>
+        <script>
+        const weatherForm = document.querySelector(".weatherform");
+            const cityInput = document.querySelector(".cityinput");
+            const card = document.querySelector(".card");
+        const apiKey = "135113b985c76a3c728a4d375f3a93a7";
+
+            
+            weatherForm.addEventListener("submit", async event => {
+                event.preventDefault();
+                const city = cityInput.value;
+                if (city) {
+                    try {
+                        const weatherData = await getWeatherData(city);
+                        displayWeatherInfo(weatherData);
+                    } catch (error) {
+                        console.error(error);
+                        displayError(error);
+                    }
+                } else {
+                    displayError("Please enter a city");
+                }
+            });
+            
+            async function getWeatherData(city) {
+                const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+                const response = await fetch(apiUrl);
+                console.log(response);
+                if (!response.ok) {
+                    throw new Error("Could not fetch weather data");
+                }
+                return await response.json();
+            }
+            
+            function displayWeatherInfo(data) {
+                const { name: city, main: { temp, humidity }, weather: [{ description, id }], wind: { speed } } = data;
+                card.textContent = "";
+                card.style.display = "flex";
+            
+                const cityDisplay = document.createElement("h1");
+                const tempDisplay = document.createElement("p");
+                const humidityDisplay = document.createElement("p");
+                const windDisplay = document.createElement("p");
+                const descDisplay = document.createElement("p");
+                const emoji = document.createElement("p");
+            
+                cityDisplay.textContent = city;
+                cityDisplay.classList.add("citydisplay");
+                card.appendChild(cityDisplay);
+            
+                tempDisplay.textContent = `${(temp - 273.15).toFixed(1)}°C`;
+                tempDisplay.classList.add("tempdisplay");
+                card.appendChild(tempDisplay);
+            
+                humidityDisplay.textContent = `Humidity: ${humidity}%`;
+                humidityDisplay.classList.add("humiditydisplay");
+                card.appendChild(humidityDisplay);
+            
+                windDisplay.textContent = `Wind Speed: ${speed} m/s`;
+                windDisplay.classList.add("winddisplay");
+                card.appendChild(windDisplay);
+            
+                descDisplay.textContent = description;
+                descDisplay.classList.add("descdisplay");
+                card.appendChild(descDisplay);
+            
+                emoji.textContent = getWeatherEmoji(id);
+                emoji.classList.add("emoji");
+                card.appendChild(emoji);
+            }
+            
+            function getWeatherEmoji(weatherId) {
+                switch (true) {
+                    case (weatherId >= 200 && weatherId < 300):
+                        return "⛈️⛈️⛈️";
+                    case (weatherId >= 300 && weatherId < 400):
+                        return "☔☔☔";
+                    case (weatherId >= 500 && weatherId < 600):
+                        return "🌨️🌨️🌨️";
+                    case (weatherId >= 600 && weatherId < 700):
+                        return "❄️❄️❄️";
+                    case (weatherId >= 700 && weatherId < 800):
+                        return "🌫️🌫️🌫️";
+                    case (weatherId === 800):
+                        return "☀️☀️☀️";
+                    case (weatherId >= 801 && weatherId < 810):
+                        return "☁️☁️☁️";
+                    default:
+                        return "❓❓❓";
+                }
+            }
+            
+            function displayError(message) {
+                const errorDisplay = document.createElement("p");
+                errorDisplay.textContent = message;
+                errorDisplay.classList.add("errordisplay");
+            
+                card.textContent = "";
+                card.style.display = "flex";
+                card.appendChild(errorDisplay);
+            }
+            </script>
+    </form>
+</body>
+</html>

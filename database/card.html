@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherNow</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+<style>@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
+    }
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f2f2f2;
+        padding: 1rem;
+        background-image: url(pics/isometric-online-payments-background_52683-1099.avif);
+        background-size: cover; /* Ensures the image covers the entire page */
+                background-position: center; /* Centers the image */
+                background-attachment: fixed; /* Keeps the background in place while scrolling */
+                margin: 0;
+                padding: 0;
+    }
+    .pricing-card-container {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 1rem;
+    }
+    .pricing-cards {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .pricingCard {
+        flex: 1;
+        transition: all .3s ease-out;
+        background-color: white;
+        margin: .5rem 1rem;
+        padding: 2rem 1rem;
+        border-radius: 4px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        cursor: pointer;
+    }
+    .centers {
+        transform: scale(1.1);
+    }
+    .pricingCard-title {
+        text-align: center;
+    }
+    .pricingCard-pricing {
+        text-align: center;
+    }
+    .price {
+        font-size:  3rem;
+        font-weight: 600;
+    }
+    .pricingCard-basket {
+        display: block;
+        background-color: #491bd5;
+        text-align: center;
+        color: #fff;
+        padding: 1rem;
+        border-radius: 100px;
+        font-weight: 600;
+        margin: 1rem;
+        text-decoration: none;
+    }
+    .pricingCard-refresh {
+        text-align: center;
+        color: #999;
+    }
+    .pricingCard-properties {
+        padding: 1rem 0;
+    }
+    
+    .pricingCard-all-properties {
+        text-align: center;
+    }
+    .pricingCard-all-properties a {
+        color:  #491bd5;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: large;
+    }
+    .pricingCard-all-properties a:hover {
+        color: #54595F;
+    }
+    
+    
+    
+    /* pricingCard-basket */
+    
+    
+    .pricingCard-basket-container {
+        width: 85%;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+    @media (max-width: 600px) {
+        .pricingCard-basket-container {
+            width: 100%;
+            margin: 0;
+        }
+    }
+    .pricingCard-basket-container .pricingCard-basket-title {
+        padding-top: 3rem;
+    }
+    .pricingCard-basket-container .pricingCard-basket-title h1 {
+        padding: 2rem 1rem;
+        padding-top: 0;
+    }
+    .pricingCard-basket-container .pricingCard-basket-title h3 {
+        font-size: 1.5rem;
+    }
+    .pricingCard-basket-container .pricingCard-basket-title p span {
+        font-weight: 600;
+    }
+    
+    .pricingCard-basket-container .plan-container {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 1rem;
+    }
+    .pricingCard-basket-container .plan-container .plan {
+        padding: 1rem;
+        margin: 1rem;
+        background-color: #fff;
+        flex: 1;
+        border: 2px solid lightgrey;
+        transition: all .5s;
+        cursor: pointer;
+    
+    }
+    .pricingCard-basket-container .plan-container .plan i {
+        color: #fff;
+        font-size: .7rem;
+        border: 2px solid lightgrey;
+        border-radius: 50%;
+        padding: .3rem;
+        transition: all .8s;
+    }
+    .pricingCard-basket-container .plan-container .plan .onay {
+        background-color: #673de6;
+    }
+    
+    
+    .pricingCard-basket-container .plan-container .plan .plan-time {
+        text-align: center;
+        font-weight: 600;
+    }
+    .pricingCard-basket-container .plan-container .plan .plan-price {
+        text-align: center;
+        padding: 2rem;
+    }
+    .pricingCard-basket-container .plan-container .plan .plan-price h2 {
+        font-size: 2rem;
+    }
+    .pricingCard-basket-container .plan-container .plan .plan-price p {
+        color: #727586;
+        font-weight: 600;
+    }
+    
+    .pricingCard-basket-container .plan-container .plan .plan-date {
+        text-align: center;
+        color: #727586;
+    }
+    
+    .pricingCard-basket-container .total-snow {
+        text-align: right;
+        padding: 0 3rem;
+    }
+    .pricingCard-basket-container .total-snow .snow {
+        color: #2f1c6a;
+        border-bottom: 2px solid lightgrey;
+    }
+    .pricingCard-basket-container .total-snow .total {
+        color: #673de6;
+        font-size: 1.2rem;
+        padding-top: .5rem;
+    }
+    
+    .payment-container {
+        display: flex;
+    }
+    .payment-container .payment {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        margin: 1rem;
+        background-color: #fff;
+        flex: 1;
+        flex-wrap: wrap;
+        border: 2px solid lightgrey;
+        transition: all .5s;
+        border-radius: 5px;
+        cursor: pointer;
+    
+    }
+    .payment-container .payment  h3 {
+        color: #673de6;
+        padding-left: 1rem;
+    }
+    .payment-container .payment i {
+        color: #fff;
+        font-size: .7rem;
+        border: 2px solid lightgrey;
+        border-radius: 50%;
+        padding: .3rem;
+        transition: all .8s;
+    }
+    .payment-container .payment .onay {
+        background-color: #673de6;
+    }
+    
+    .checkout-container {
+        border: 2px solid lightgrey;
+        border-radius: 5px;
+        padding: 1rem;
+    }
+    .checkout-container .checkout-detail {
+        display: flex;
+        margin: 1rem 0;
+    }
+    .checkout-container .checkout-detail p{
+        color: #727586;
+        flex: 1;
+    }
+    .checkout-container .checkout-detail span {
+        font-weight: 600;
+    }
+    .hr {
+        border: 1px solid lightgrey;
+    }
+    .checkout-container .checkout-total {
+        margin-top: 1rem;
+    }
+    .checkout-container .checkout-total .total{
+        display: flex;
+    }
+    .checkout-container .checkout-total .total h3{
+        flex: 1;
+        font-size: 1.5rem;
+    }
+    .checkout-container .checkout-total .total span {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+    
+    .checkout-container .pay {
+        display: flex;
+    }
+    .checkout-container .pay button{
+        background-color: #673de6;
+        border:none;
+        padding: 1rem 3rem;
+        font-size: 1.3rem;
+        color: #fff;
+        border-radius: 5px;
+        margin: 1rem 0;
+        cursor: pointer;
+    
+    }
+    
+    .pay-property {
+        padding: 1rem;
+    }
+    .pay-property i {
+        color: #00b090;
+        padding-right: .3rem;
+    }</style>
+</head>
+<body>
+    <h1 style="text-align: center;">Subscription</h1>
+    <div class="pricing-card-container">
+        <div class="pricing-cards">
+            <div class="pricingCard">
+                <div class="pricingCard-title">
+                    <h3>Personal</h3>
+
+                </div>
+                <div class="pricingCard-pricing">
+                    ₹<span class="price">199</span><h3>3</h3>Month
+                </div>
+                <a href="pay2.php" class="pricingCard-basket">
+                    Subscribe
+                </a>
+                  <div class="pricingCard-properties">
+                    <p>
+                        <i class="fas fa-check" style="color: #00b67a;"></i>
+                        <strong>Current weather API
+
+                            Hourly Forecast 4 days</strong>
+                    </p>
+
+                    <p>
+                        <i class="fas fa-check" style="color: #00b67a;"></i>
+                        <strong>500 Tickers</strong>
+                    </p>
+                    <p>
+                        <i class="fas fa-check" style="color: #00b67a;"></i>
+                        <strong>10000</strong> Monthly Visits
+                    </p>
+                    <p>
+                        <i class="fas fa-check" style="color: #00b67a;"></i>
+                        <strong>1</strong> E-mail Account
+                    </p>
+
+
+                </div>
+
+
+            </div><!-- pricingCard -->
+
+
+            <div class="pricingCard orta centers">
+                <div class="pricingCard-title">
+                    <h3>Student</h3>
+
+                </div>
+                <div class="pricingCard-pricing">
+                   ₹<span class="price">399</span><h3>3</h3>Month
+                </div>
+                <a href="pay2.php" class="pricingCard-basket">
+                    Subscribe
+                </a>
+                <div class="pricingCard-properties">
+                    <p>
+                        <i class="fas fa-check" style="color: #00b67a;"></i>
+                        <strong>Current weather API
+
+                            Daily Forecast 16 days
+                            
+                            3-hour forecast for 5 days
+                            
+                            Weather Maps - Current weather, 5 weather layers
+                            
+                            Air Pollution API
+                            
+                            Geocoding API</strong>
+                    </p>
+
+                    <p>
+                        <i class="fas fa-check" style="color: #00b67a;"></i>
+                        <strong>1000 Tickers</strong>
+                    </p>
+
+                    <p>
+                        <i class="fas fa-check" style="color: #00b67a;"></i>
+                        <strong>10000</strong> Monthly Visits
+                    </p>
+                    <p>
+                        <i class="fas fa-check" style="color: #00b67a;"></i>
+                        <strong>2</strong> Alerts
+                    </p>
+
+
+                </div>
+
+            </div><!-- pricingCard -->
+            <div class="pricingCard">
+                <div class="pricingCard-title">
+                    <h3>Enterprise</h3>
+
+                </div>
+                <div class="pricingCard-pricing">
+                    ₹<span class="price">999</span><h3>3</h3>Month
+                </div>
+                <a href="pay2.php" class="pricingCard-basket">
+                    Subscribe
+                </a>
+                <div class="pricingCard-properties">
+                    <p>
+                        <i class="fas fa-check" style="color: #00b67a;"></i>
+                        <strong>Current weather API
+
+                            Hourly Forecast 4 days
+                            
+                            Daily Forecast 16 days
+                            
+                            3-hour forecast for 5 days
+                            
+                            Bulk Download (global cities)
+                            
+                            Weather Maps - History, Current, Forecast weather, 15 weather layers
+                            
+                            Global Precipitation Map - Historical data
+                            
+                            Air Pollution API
+                            
+                            Geocoding API
+                            
+                            
+                            Historical data</strong>
+                    </p>
+
+                    <p>
+                        <i class="fas fa-check" style="color: #00b67a;"></i>
+                        <strong>Unlimited</strong> Tickers
+                    </p>
+                    <p>
+                        <i class="fas fa-check" style="color: #00b67a;"></i>
+                        <strong>Unlimited</strong> Monthly Visits
+                    </p>
+                    <p>
+                        <i class="fas fa-check" style="color: #00b67a;"></i>
+                        <strong>3</strong>  E-mail Account Per Employee
+                    </p>
+
+
+                </div>
+
+            </div><!-- pricingCard -->
+        </div><!-- pricing-cards -->
+    </div><!-- pricing-card-container -->
+
+
+    <script>$(document).ready(function()  {
+        $(".pricingCard").hover(function() {
+            $(this).addClass("centers");
+            $(".orta").removeClass("centers");
+    
+        },function() {
+            $(this).removeClass("centers");
+            $(".orta").addClass("centers");
+    
+        });
+    
+    
+        $(".plan").click(function() {
+            var i = this.childNodes[1];
+            $(".plan i").removeClass("onay");
+            $(".plan").css("border-color" , "lightgrey");
+    
+            $(i).addClass("onay");
+            $(this).css("border-color" , "#673de6");
+        })
+    
+        $(".payment").click(function() {
+            var i = this.childNodes[1];
+            $(".payment i").removeClass("onay");
+            $(".payment").css("border-color" , "lightgrey");
+    
+            $(i).addClass("onay");
+            $(this).css("border-color" , "#673de6");
+    
+        })
+    })</script>
+
+</body>
+</html>

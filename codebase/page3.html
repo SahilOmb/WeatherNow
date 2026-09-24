@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherNow</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+      body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(229, 223, 223);
+    background-image: url('pics/snow-1740841526099-566.jpg');
+    background-size: cover; /* Ensures the background image covers the entire body */
+    background-position: center; 
+    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-attachment: fixed; /* Makes the background image stay fixed while scrolling */
+    width: 100%;
+    height: 100vh; /* Ensures the body covers the entire viewport height */
+    margin: 0; /* Removes default margin */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centers content vertically */
+}
+
+        h1{
+            color: hsl(180, 87%, 34%);
+        }
+        form{
+            background-color: aliceblue;
+            text-align: center;
+            max-width: 350px;
+            margin: auto;
+            padding: 25px;
+            box-shadow: 6px 6px 15px;
+            border-radius: 5px;
+        }
+        #text{
+            width: 50%;
+            text-align: center;
+            font-size: x-large;
+            border: 2px solid rgba(0, 0, 0, 0.575);
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        label{
+            font-size: larger;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        button{
+            margin-top: 30px;
+            background-color: rgba(0, 206, 206, 0.71);
+            font-size: 1.5em;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: rgba(24, 155, 155, 0.904);
+        }
+        #result{
+            font-size: x-large;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <h1>Temperature conversion</h1>
+        <input type="number" id="text" value="0"><br>
+        <input type="radio" id="toFah" name="unit">
+        <label for="toFah">Celsius ➡️➡️Fahrenheit</label>
+        <br>
+        <input type="radio" id="toCel" name="unit">
+        <label for="toCel">Fahrenheit ➡️➡️ Celsius</label>
+        <br>
+        <button type="button" onclick="convert()">Submit</button>
+        <p id="result">select a unit</p>
+    </form>
+
+    <script>
+        const text = document.getElementById("text");
+        const toFah = document.getElementById("toFah");
+        const toCel = document.getElementById("toCel");
+        const result = document.getElementById("result");
+        let temp;
+
+        function convert() {
+            if (toFah.checked) {
+                temp = Number(text.value);
+                temp = temp * 9 / 5 + 32;
+                result.textContent = temp + "°F";
+            } else if (toCel.checked) {
+                temp = Number(text.value);
+                temp = (temp - 32) * (5 / 9);
+                result.textContent = temp.toFixed(2) + "°C";  // Rounding to 2 decimal places for better readability
+            } else {
+                result.textContent = "No unit selected";
+            }
+        }
+    </script>
+</body>

@@ -1,0 +1,142 @@
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centers content vertically */
+    background-image: url('your-background.jpg');
+    background-size: cover; /* Ensures the background image covers the entire body */
+    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-attachment: fixed; /* Makes the background image stay fixed while scrolling */
+    background-position: center; /* Centers the background image */
+    width: 100%;
+    height: 100vh; /* Ensures the body covers the entire viewport height */
+    animation: fadeInBackground 2s ease-in-out;
+}
+
+.weatherform {
+    margin: 20px;
+}
+
+.cityinput {
+    padding: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+    border: 2px solid #0000006d;
+    border-radius: 10px;
+    margin: 10px;
+    width: 300px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.cityinput:focus {
+    border-color: #02ec83;
+    box-shadow: 0 0 10px #02ec83;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    font-weight: bold;
+    background-color: #02ec83;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    
+}
+
+button:hover {
+    background-color: rgb(2, 151, 86);
+    color: aliceblue;
+    transform: scale(1.05);
+}
+
+.card {
+    background: linear-gradient(180deg, rgb(231, 234, 233), #5bca71);
+    padding: 50px;
+    box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.2);
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+p {
+    font-size: 1.5rem;
+    margin: 5px 0;
+}
+
+.citydisplay, .tempdisplay {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 25px;
+}
+
+.humiditydisplay {
+    font-weight: bold;
+    margin: 25px;
+}
+
+.descdisplay {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.errordisplay {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: hsla(0, 0%, 0%, 0.555);
+}
+
+@keyframes fadeInBackground {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        justify-content: flex-start;
+        height: auto; /* Adjusts for smaller screens */
+    }
+
+    .card {
+        padding: 20px;
+        min-width: auto; /* Adjusts for smaller screens */
+        animation: fadeInBackgroundMobile 1.5s ease-in-out;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .citydisplay, .tempdisplay {
+        font-size: 2.5rem;
+    }
+
+    .descdisplay {
+        font-size: 1.5rem;
+    }
+}
+
+@keyframes fadeInBackgroundMobile {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+    
+    

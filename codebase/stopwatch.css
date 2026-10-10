@@ -1,0 +1,73 @@
+   body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('pics/634013.jpg'); /* Background image */
+                background-size: cover; /* Ensures the image covers the entire page */
+                background-position: center; /* Centers the image */
+                background-attachment: fixed; /* Keeps the background in place while scrolling */
+                margin: 0;
+                padding: 0;
+        }
+        
+        /* Container styling */
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 20px 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Title styling */
+        h1 {
+            color: #333333;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        /* Timer section */
+        #time {
+            margin: 20px 0;
+        }
+        
+        .digit {
+            font-size: 2rem;
+            font-weight: bold;
+            color: hsl(157, 100%, 40%);
+            margin: 0 5px;
+        }
+        
+        .txt {
+            font-size: 1rem;
+            color: #777777;
+            margin: 0 8px;
+        }
+        
+        /* Buttons styling */
+        #buttons {
+            margin-top: 20px;
+        }
+        
+        .btn {
+            background-color:  hsl(157, 100%, 40%);
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color:  hwb(157 14% 54%);
+        }
+        
+        .btn:active {
+            background-color: hwb(157 9% 57%);
+        }

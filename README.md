@@ -21,42 +21,46 @@ WeatherNow is a full-stack weather application built with a PHP/MySQL backend an
 • User Dashboard: A central portal (dashboard.php) providing users with personalized weather tracking layouts.
 • Admin Control Panel: Dedicated administrative interface (adminpanel.php) to manage platform configurations, user accounts, and system analytics.
 
+### 📂 Project Structure
+
+```text
 WeatherNow/
 ├── .github/
 │   └── appmod/
 │       └── appcat/
-├── pics/                                # UI Assets & Weather Icons
+├── pics/                                          # UI Assets & Weather Icons
 │   ├── favicon.png
 │   ├── current.png
-│   └── [various image files...]         # Visual elements and background graphics
-├── db_connect.php                       # Database Connection Setup
-├── register.php                         # User Registration Logic
-├── login.php                            # User Login Authentication
-├── logout.php                           # User Logout Handling
-├── dashboard.php                        # Main User Dashboard Portal
-├── adminpanel.php                       # Administrative Management Interface
-├── Main.html                            # Application Landing Page
-├── Main.css
-├── Main.js
-├── page1.html                           # Live Weather Feature Module
-├── page1.css
-├── Page1.js
-├── page3.html                           # Historical Data Module
-├── page3.css
-├── Page3.js
-├── page7.html                           # Advanced Analysis/Analytics Module
-├── page7.css
-├── Page7.js
-├── card.html                            # Weather Widget Components
-├── card.css
-├── cards.js
-├── map.html                             # Weather Radar & Geographic Maps
-├── Map.js
-├── pay2.php                             # Premium Feature / Payment Handling
-├── feedback2.html                       # User Reviews & Feedback Form
-├── stopwatch.html                       # Built-in Performance/Timer Utility
-├── stopwatch.css
-└── Stopwatch.js
+│   └── [various images...]                        # UI graphics
+├── db_connect.php                                 # Database connection setup
+├── register.php                                   # User registration
+├── login.php                                      # User login authentication
+├── logout.php                                     # User logout handling
+├── dashboard.php                                  # Main user dashboard portal
+├── adminpanel.php                                 # Administrative management interface
+├── Main.html                                      # Application landing page
+├── Main.css                                       # Landing page styling
+├── Main.js                                        # Landing page interactivity
+├── page1.html                                     # Live weather feature module
+├── page1.css                                      # Live weather styling
+├── Page1.js                                       # Live weather logic & API fetch
+├── page3.html                                     # Historical data module
+├── page3.css                                      # Historical data styling
+├── Page3.js                                       # Historical data logic
+├── page7.html                                     # Advanced analytics module
+├── page7.css                                      # Advanced analytics styling
+├── Page7.js                                       # Advanced analytics charts/logic
+├── card.html                                      # Weather widget components
+├── card.css                                       # Widget styling
+├── cards.js                                       # Dynamic widget renderer
+├── map.html                                       # Weather radar & geographic maps
+├── Map.js                                         # Mapbox/Leaflet map rendering script
+├── pay2.php                                       # Premium feature & payment handling
+├── feedback2.html                                 # User reviews & feedback form
+├── stopwatch.html                                 # Built-in performance utility
+├── stopwatch.css                                  # Stopwatch styling
+└── Stopwatch.js                                   # Stopwatch timer execution logic
+```
 
 
 Follow these steps to set up and run the project locally on your machine.

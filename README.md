@@ -22,45 +22,47 @@ WeatherNow is a full-stack weather application built with a PHP/MySQL backend an
 • Admin Control Panel: Dedicated administrative interface (adminpanel.php) to manage platform configurations, user accounts, and system analytics.
 
 ### 📂 Project Structure
+# 📂 Project Structure
 
 ```text
-WeatherNow/
-├── .github/
-│   └── appmod/
-│       └── appcat/
-├── pics/                                          # UI Assets & Weather Icons
-│   ├── favicon.png
-│   ├── current.png
-│   └── [various images...]                        # UI graphics
-├── db_connect.php                                 # Database connection setup
-├── register.php                                   # User registration
-├── login.php                                      # User login authentication
-├── logout.php                                     # User logout handling
-├── dashboard.php                                  # Main user dashboard portal
-├── adminpanel.php                                 # Administrative management interface
-├── Main.html                                      # Application landing page
-├── Main.css                                       # Landing page styling
-├── Main.js                                        # Landing page interactivity
-├── page1.html                                     # Live weather feature module
-├── page1.css                                      # Live weather styling
-├── Page1.js                                       # Live weather logic & API fetch
-├── page3.html                                     # Historical data module
-├── page3.css                                      # Historical data styling
-├── Page3.js                                       # Historical data logic
-├── page7.html                                     # Advanced analytics module
-├── page7.css                                      # Advanced analytics styling
-├── Page7.js                                       # Advanced analytics charts/logic
-├── card.html                                      # Weather widget components
-├── card.css                                       # Widget styling
-├── cards.js                                       # Dynamic widget renderer
-├── map.html                                       # Weather radar & geographic maps
-├── Map.js                                         # Mapbox/Leaflet map rendering script
-├── pay2.php                                       # Premium feature & payment handling
-├── feedback2.html                                 # User reviews & feedback form
-├── stopwatch.html                                 # Built-in performance utility
-├── stopwatch.css                                  # Stopwatch styling
-└── Stopwatch.js                                   # Stopwatch timer execution logic
+ codebase/                                      # Main application codebase directory
+    ├── .github/
+    │   └── appmod/
+    │       └── appcat/
+    ├── pics/                                      # UI Assets & Weather Icons
+    │   ├── favicon.png
+    │   ├── current.png
+    │   └── [various images...]                    # UI graphics
+    ├── db_connect.php                             # Database connection setup
+    ├── register.php                               # User registration
+    ├── login.php                                  # User login authentication
+    ├── logout.php                                 # User logout handling
+    ├── dashboard.php                              # Main user dashboard portal
+    ├── adminpanel.php                             # Administrative management interface
+    ├── Main.html                                  # Application landing page
+    ├── Main.css                                   # Landing page styling
+    ├── Main.js                                    # Landing page interactivity
+    ├── page1.html                                 # Live weather feature module
+    ├── page1.css                                  # Live weather styling
+    ├── Page1.js                                   # Live weather logic & API fetch
+    ├── page3.html                                 # Historical data module
+    ├── page3.css                                  # Historical data styling
+    ├── Page3.js                                   # Historical data logic
+    ├── page7.html                                 # Advanced analytics module
+    ├── page7.css                                  # Advanced analytics styling
+    ├── Page7.js                                   # Advanced analytics charts/logic
+    ├── card.html                                  # Weather widget components
+    ├── card.css                                   # Widget styling
+    ├── cards.js                                   # Dynamic widget renderer
+    ├── map.html                                   # Weather radar & geographic maps
+    ├── Map.js                                     # Mapbox/Leaflet map rendering script
+    ├── pay2.php                                   # Premium feature & payment handling
+    ├── feedback2.html                             # User reviews & feedback form
+    ├── stopwatch.html                             # Built-in performance utility
+    ├── stopwatch.css                              # Stopwatch styling
+    └── Stopwatch.js                               # Stopwatch timer execution logic
 ```
+
 
 
 Follow these steps to set up and run the project locally on your machine.

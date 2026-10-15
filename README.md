@@ -1,28 +1,24 @@
-##🌤️ WeatherNow
 
-WeatherNow is a full-stack weather application built with a PHP/MySQL backend and a modular JavaScript/CSS3 frontend. The platform delivers live atmospheric metrics, historical climate trends, and interactive weather radar mapping through a secure, user-managed portal.
+🌤️ WeatherNow
 
-🚀 Core Features
+WeatherNow is a full-stack weather application built with a PHP/MySQL backend and a modular JavaScript/CSS3 frontend. It delivers live atmospheric metrics, historical trends, and interactive mapping through a secure, user-managed portal.
 
-• Secure User Management: Features complete registration, login session tracking, and a dedicated Admin Panel (adminpanel.php) to manage platform configurations.
-• Dynamic Data Modules: Delivers live weather analytics, historical trend tracking, and reusable UI widget cards for clean multi-city comparisons.
-• Interactive Visual Mapping: Incorporates geographic radar maps (map.html) for real-time visual tracking of global weather conditions.
-• Premium Upgrades: Integrates a functional payment module (pay2.php) to unlock advanced, high-frequency weather layers and analytics.
+🚀 Tech Stack
 
-🛠️ Technology Stack
+• Frontend: Semantic HTML5, Custom CSS3, Modern JavaScript (Asynchronous API Fetching)
+• Backend: PHP (Session Tracking & Secure Endpoints)
+• Database: MySQL relational database
+• Environment: Optimized for local deployment on Apache servers via XAMPP
 
-• Frontend: Semantic HTML5, Custom CSS3 Layouts, and Modern JavaScript (Asynchronous API Fetching).
-• Backend & Database: PHP (Session Tracking & Secure Endpoints) paired with a MySQL relational database.
-• Environment: Optimized for local deployment on Apache servers via XAMPP.
-
-👤 User Authentication & Management
+✨ Features
 
 • Secure Access: Complete registration (register.php), session-validated login (login.php), and logout (logout.php) modules.
-• User Dashboard: A central portal (dashboard.php) providing users with personalized weather tracking layouts.
-• Admin Control Panel: Dedicated administrative interface (adminpanel.php) to manage platform configurations, user accounts, and system analytics.
+• User & Admin Dashboards: Personalized weather tracking layouts (dashboard.php) and a configuration control panel (adminpanel.php).
+• Dynamic Data: Live weather analytics, historical trend tracking, and reusable multi-city comparison widgets.
+• Interactive Mapping: Geographic radar maps (map.html) for real-time visual tracking of global weather conditions.
+• Premium Upgrades: Functional payment module (pay2.php) to unlock advanced, high-frequency weather layers.
 
-### 📂 Project Structure
-# 📂 Project Structure
+📂 Project Structure
 
 ```text
  codebase/                                      # Main application codebase directory
